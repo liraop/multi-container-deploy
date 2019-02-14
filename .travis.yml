@@ -13,8 +13,8 @@ after_success:
   - docker build -t "$DOCKERHUB_ID"/multi-nginx ./nginx
   - docker build -t "$DOCKERHUB_ID"/multi-server ./server
   - docker build -t "$DOCKERHUB_ID"/multi-worker ./worker
-  - echo "$DOCKERHUD_PW" | docker login -u "$DOCKERHUB_ID" --password-stdin
-  - docker push "$DOCKERHUB_ID"/multi-client
-  - docker push "$DOCKERHUB_ID"/multi-nginx
-  - docker push "$DOCKERHUB_ID"/multi-server
-  - docker push "$DOCKERHUB_ID"/multi-worker
+  - echo "$DOCKERHUB_PW" | docker login -u "$DOCKERHUB_ID" --password-stdin
+  - docker push "$DOCKERHUB_ID"/multi-client:latest
+  - docker push "$DOCKERHUB_ID"/multi-nginx:latest
+  - docker push "$DOCKERHUB_ID"/multi-server:latest
+  - docker push "$DOCKERHUB_ID"/multi-worker:latest
