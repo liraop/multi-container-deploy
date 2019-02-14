@@ -9,12 +9,12 @@ script:
   - docker run liraop/react-test npm run test -- --coverage
 
 after_success:
-  - docker build -t liraop/multi-client ./client
-  - docker build -t liraop/multi-nginx ./nginx
-  - docker build -t liraop/multi-server ./server
-  - docker build -t liraop/multi-worker ./worker
+  - docker build -t "$DOCKERHUB_ID"/multi-client ./client
+  - docker build -t "$DOCKERHUB_ID"/multi-nginx ./nginx
+  - docker build -t "$DOCKERHUB_ID"/multi-server ./server
+  - docker build -t "$DOCKERHUB_ID"/multi-worker ./worker
   - echo "$DOCKERHUD_PW" | docker login -u "$DOCKERHUB_ID" --pasword-stdin
-  - docker push liraop/multi-client
-  - docker push liraop/multi-nginx
-  - docker push liraop/multi-server
-  - docker push liraop/multi-worker
+  - docker push "$DOCKERHUB_ID"/multi-client
+  - docker push "$DOCKERHUB_ID"/multi-nginx
+  - docker push "$DOCKERHUB_ID"/multi-server
+  - docker push "$DOCKERHUB_ID"/multi-worker
