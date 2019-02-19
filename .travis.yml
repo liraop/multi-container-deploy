@@ -18,3 +18,16 @@ after_success:
   - docker push "$DOCKERHUB_ID"/multi-nginx:latest
   - docker push "$DOCKERHUB_ID"/multi-server:latest
   - docker push "$DOCKERHUB_ID"/multi-worker:latest
+
+deploy:
+  provider: elasticbeanstalk
+  region: sa-east-1
+  app: multi-docker
+  env: MultiDocker-env
+  bucket_name: elasticbeanstalk-sa-east-1-420696111632
+  bucket_path: docker-multi
+  on:
+    branch: master
+  access_key_id: $AWS_ID
+  secret_access_key:
+    secure: $AWS_Pw
