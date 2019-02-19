@@ -31,7 +31,7 @@
     },
     {
       "name":  "worker",
-      "image": "liraop/multi-client",
+      "image": "liraop/multi-worker",
       "essential": false,
       "memory": 128
     }
